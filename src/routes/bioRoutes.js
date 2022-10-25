@@ -36,4 +36,34 @@ router.post("/addWeb", async (req, res) => {
   } catch (e) {}
 });
 
+router
+  .route("/:id")
+  .put(async (req, res) => {
+    try {
+      const { websiteName, loginStatus, webSiteUrl } = req.body;
+
+      const website = await WebsiteList.findById(req.params.id);
+
+      website.websiteName = websiteName;
+      website.webSiteUrl = webSiteUrl;
+      website.loginStatus = loginStatus;
+
+      website.save();
+
+      console.log(website);
+      res.status(200).json({ website });
+    } catch (e) {
+      console.log("error");
+      res.status(500).json({ message: "website doesn't exist" });
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      WebsiteList.deleteOne(req.params.id);
+      res.status(200).json({ message: "delete successful" });
+    } catch (e) {
+      res.status(500).json({ message: "delete unsuccessful" });
+    }
+  });
+
 module.exports = router;
