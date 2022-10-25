@@ -1,41 +1,28 @@
 const express = require("express");
-const WebsiteList = require("./bioSchema");
+const WebsiteList = require("./schema/bioSchema");
 const app = express();
 const mongoose = require("mongoose");
 
 //"mongodb://mongodb+srv://appu:<#Appu2705>@cluster0.v4umeji.mongodb.net/?retryWrites=true&w=majority"
 
-mongoose.connect(
-  "mongodb://localhost:27017/biopass",
-  {
+mongoose
+  .connect("mongodb://0.0.0.0:27017/biopass", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
-  },
-  () => {
+  })
+  .then(() => {
     console.log("connected");
-  },
-  (e) => console.error(e)
-);
+  })
+  .catch((error) => console.log(error.message));
 
-async function web() {
-  const website = await WebsiteList.create({
-    websiteName: "Wikipedia",
-    loginStatus: true,
-  });
-  console.log(website);
-}
+const websiteList = new WebsiteList({
+  websiteName: "Wikipedia",
+  loginStatus: true,
+});
 
-web();
-
-// const websiteList = new WebsiteList({
-//   websiteName: "Wikipedia",
-//   loginStatus: true,
-// });
-
-// websiteList.save().then(() => {
-//   console.log("user saved");
-// });
+websiteList.save().then(() => {
+  console.log("user saved");
+});
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
