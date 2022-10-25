@@ -14,15 +14,26 @@ router.get("/", async (req, res) => {
   }
 });
 
-const websites = [
-  { websiteName: "Wikipideia", loginStatus: true },
-  { websiteName: "OLX", loginStatus: false },
-];
+router.post("/addWeb", async (req, res) => {
+  try {
+    const { websiteName, loginStatus, webSiteUrl } = req.body;
 
-router.post("/post", (req, res) => {
-  const isValid = true;
-  if (isValid) {
-  }
+    const websiteList = new WebsiteList({
+      websiteName,
+      loginStatus,
+      webSiteUrl,
+    });
+
+    const saved = await websiteList.save();
+
+    if (saved) {
+      console.log("data saved");
+      res.status(200).json({ success: true });
+    } else {
+      console.log("not saved");
+      res.status(500).json({ success: false });
+    }
+  } catch (e) {}
 });
 
 module.exports = router;
