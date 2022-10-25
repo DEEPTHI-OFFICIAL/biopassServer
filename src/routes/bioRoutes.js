@@ -1,9 +1,17 @@
 const express = require("express");
 const router = express.Router();
+const WebsiteList = require("../schema/bioSchema");
 
-router.get("/", (req, res) => {
-  console.log(req.query.name);
-  res.json(websites);
+require("../db/db");
+
+router.get("/", async (req, res) => {
+  try {
+    const websiteList = await WebsiteList.find();
+    res.status(200).json(websiteList);
+    console.log("success");
+  } catch (e) {
+    console.log("couldn't retrieve");
+  }
 });
 
 const websites = [
