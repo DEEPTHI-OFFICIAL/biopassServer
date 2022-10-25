@@ -8,6 +8,12 @@ const bioSchema = new mongoose.Schema({
     required: true,
     lowercase: true,
   },
+  username: {
+    type: String,
+  },
+  password: {
+    type: String,
+  },
   loginStatus: {
     type: Boolean,
     required: true,
