@@ -1,5 +1,5 @@
 const express = require("express");
-const WebsiteList = require("./schema/bioSchema");
+const WebsiteList = require("./src/schema/bioSchema");
 const app = express();
 const mongoose = require("mongoose");
 
@@ -15,20 +15,28 @@ mongoose
   })
   .catch((error) => console.log(error.message));
 
-const websiteList = new WebsiteList({
-  websiteName: "Wikipedia",
-  loginStatus: true,
-});
+runt();
 
-websiteList.save().then(() => {
-  console.log("user saved");
-});
+async function runt() {
+  try {
+    const websiteList = await WebsiteList.find();
+
+    // const websiteList = await WebsiteList.create({
+    //   websiteName: "whatsapp",
+    //   loginStatus: true,
+    //   webSiteUrl: "www.whatsapp.com",
+    // });
+    console.log(websiteList);
+  } catch (e) {
+    console.log(e.message);
+  }
+}
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const userRouter = require("./routes/bioRoutes");
+const userRouter = require("./src/routes/bioRoutes");
 
 app.use("/biopass", userRouter);
 
