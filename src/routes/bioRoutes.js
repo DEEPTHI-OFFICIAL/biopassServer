@@ -33,7 +33,10 @@ router.post("/addWeb", async (req, res) => {
       console.log("not saved");
       res.status(500).json({ success: false });
     }
-  } catch (e) {}
+  } catch (e) {
+    console.log("unvalid data");
+    res.status(500).json({ message: "invalid format" });
+  }
 });
 
 router

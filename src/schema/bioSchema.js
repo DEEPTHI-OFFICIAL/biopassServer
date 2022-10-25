@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+//username, password
+
 const bioSchema = new mongoose.Schema({
   websiteName: {
     type: String,

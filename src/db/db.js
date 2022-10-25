@@ -1,10 +1,14 @@
 const mongoose = require("mongoose");
-//"mongodb://mongodb+srv://appu:<password>@cluster0.v4umeji.mongodb.net/?retryWrites=true&w=majority"
+
+//atlas = "mongodb+srv://appu:appu@cluster0.v4umeji.mongodb.net/?retryWrites=true&w=majority"
+//local = "mongodb://0.0.0.0:27017/biopass"
+const Db =
+  "mongodb+srv://appu:appu@cluster0.v4umeji.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.Promise = global.Promise;
 
 mongoose
-  .connect("mongodb://0.0.0.0:27017/biopass", {
+  .connect(Db, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
