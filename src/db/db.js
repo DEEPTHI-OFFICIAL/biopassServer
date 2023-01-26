@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 
 //atlas = "mongodb+srv://appu:appu@cluster0.v4umeji.mongodb.net/?retryWrites=true&w=majority"
 //local = "mongodb://0.0.0.0:27017/biopass"
-const Db =
-  "mongodb+srv://appu:appu@cluster0.v4umeji.mongodb.net/?retryWrites=true&w=majority";
+const Db = "mongodb+srv://appu:appu@cluster0.jme0etq.mongodb.net/test";
 
 mongoose.Promise = global.Promise;
 
