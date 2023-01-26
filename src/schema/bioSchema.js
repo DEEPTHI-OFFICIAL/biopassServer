@@ -3,10 +3,6 @@ const mongoose = require("mongoose");
 //username, password
 
 const bioSchema = new mongoose.Schema({
-  webisteUrl: {
-    type: String,
-    required: true,
-  },
   websiteName: {
     type: String,
     required: true,
