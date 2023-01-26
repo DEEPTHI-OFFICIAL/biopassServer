@@ -43,12 +43,12 @@ router
   .route("/:id")
   .put(async (req, res) => {
     try {
-      const { websiteName, loginStatus, webSiteUrl } = req.body;
+      const { loginStatus, userName, password } = req.body;
 
       const website = await WebsiteList.findById(req.params.id);
 
-      website.websiteName = websiteName;
-      website.webSiteUrl = webSiteUrl;
+      website.username = userName;
+      website.password = password;
       website.loginStatus = loginStatus;
 
       website.save();
