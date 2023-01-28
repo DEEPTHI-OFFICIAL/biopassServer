@@ -41,6 +41,15 @@ router.post("/addWeb", async (req, res) => {
 
 router
   .route("/:id")
+  .get(async (req, res) => {
+    try {
+      const website = await WebsiteList.findById(req.params.id);
+      res.status(500).json({ website });
+    } catch (e) {
+      console.log("error");
+      res.status(500).json({ message: "website doesn't exist" });
+    }
+  })
   .put(async (req, res) => {
     try {
       const { loginStatus, userName, password } = req.body;
