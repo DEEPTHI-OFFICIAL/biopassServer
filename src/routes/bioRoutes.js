@@ -16,12 +16,13 @@ router.get("/", async (req, res) => {
 
 router.post("/addWeb", async (req, res) => {
   try {
-    const { websiteName, loginStatus, webSiteUrl } = req.body;
+    const { websiteName, webSiteUrl, userName, password } = req.body;
 
     const websiteList = new WebsiteList({
       websiteName,
-      loginStatus,
       webSiteUrl,
+      userName,
+      password,
     });
 
     const saved = await websiteList.save();
