@@ -16,13 +16,18 @@ app.use("/biopass", userRouter);
 
 const server = app.listen(port);
 
-const io = socket(server);
-//Socket.io Connection------------------
+const io = socket(server, {cors:{origin:'*'}});
+const clients = io.sockets.sockets;
+if (clients.size > 0) {
+  const client = clients.values().next().value;
+  const wsServerUrl = client.conn.remoteAddress + ":" + client.conn.remotePort;
+  console.log("WebSocket server URL:", wsServerUrl);
+}
 io.on("connection", (socket) => {
   console.log("New socket connection: " + socket.id);
-
   socket.on("checkSocket", () => {
     console.log("worked socket");
     io.emit("checkSocket", "worked Sockets");
   });
+
 });
