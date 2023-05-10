@@ -45,7 +45,7 @@ router
   .get(async (req, res) => {
     try {
       const website = await WebsiteList.findById(req.params.id);
-      res.status(500).json({ website });
+      res.status(200).json({ website });
     } catch (e) {
       console.log("error");
       res.status(500).json({ message: "website doesn't exist" });
