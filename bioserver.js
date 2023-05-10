@@ -8,10 +8,7 @@ const cors = require("cors");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-const corsOption = {
-  origin: "*",
-};
-app.use(cors(corsOption));
+app.use(cors());
 
 const userRouter = require("./src/routes/bioRoutes");
 
