@@ -17,7 +17,7 @@ app.use("/biopass", userRouter);
 
 const server = app.listen(port);
 
-const io = socket(server, { cors: { origin: "*" } });
+const io = socket(server, { cors: { origin: "*", methods: ["GET", "POST"] } });
 const clients = io.sockets.sockets;
 if (clients.size > 0) {
   const client = clients.values().next().value;
