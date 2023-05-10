@@ -19,7 +19,7 @@ const bioSchema = new mongoose.Schema({
     required: true,
     default: false,
   },
-  webSiteUrl: String,
+  websiteUrl: String,
   createdAt: {
     type: Date,
     immutable: true,
