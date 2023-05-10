@@ -26,9 +26,13 @@ if (clients.size > 0) {
 io.on("connection", (socket) => {
   console.log("New socket connection: " + socket.id);
   socket.on("checkSocket", () => {
-    console.log("worked socket");
     io.emit("checkSocket", "worked Sockets");
   });
 
-  socket.on("Authenticate", (data) => {});
+  socket.on("authenticate", () => {
+    io.emit("authenticate", "connected to mobile app");
+  });
+  socket.on("authResult", (data) => {
+    io.emit("authResult", data);
+  });
 });
