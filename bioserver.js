@@ -14,6 +14,14 @@ app.use(cors());
 const userRouter = require("./src/routes/bioRoutes");
 
 app.use("/biopass", userRouter);
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 const server = app.listen(port);
 
