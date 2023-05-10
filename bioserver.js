@@ -8,6 +8,7 @@ const cors = require("cors");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 app.use(cors());
 
 const userRouter = require("./src/routes/bioRoutes");
@@ -16,7 +17,9 @@ app.use("/biopass", userRouter);
 
 const server = app.listen(port);
 
-const io = socket(server, { cors: { origin: "*" } });
+const io = socket(server, {
+  cors: { origin: "https://biopasssever-production.up.railway.app/biopass" },
+});
 const clients = io.sockets.sockets;
 if (clients.size > 0) {
   const client = clients.values().next().value;
