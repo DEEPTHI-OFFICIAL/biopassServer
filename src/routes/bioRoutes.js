@@ -40,6 +40,15 @@ router.post("/addWeb", async (req, res) => {
   }
 });
 
+router.route("/deleteall").get(async (req, res) => {
+  try {
+    await WebsiteList.deleteMany({});
+    res.status(200).json({ message: "Deleted" });
+  } catch (err) {
+    res.status(500).json({ message: "Failed to delete" });
+  }
+});
+
 router
   .route("/:id")
   .get(async (req, res) => {
