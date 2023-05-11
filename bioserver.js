@@ -34,8 +34,8 @@ io.on("connection", (socket) => {
     io.emit("checkSocket", "worked Sockets");
   });
 
-  socket.on("authenticate", () => {
-    io.emit("authenticate", "connected to mobile app");
+  socket.on("authenticate", (data) => {
+    io.emit("authenticate", data);
   });
   socket.on("authResult", (data) => {
     io.emit("authResult", data);
