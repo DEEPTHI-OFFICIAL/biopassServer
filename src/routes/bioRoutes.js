@@ -62,11 +62,11 @@ router
   })
   .put(async (req, res) => {
     try {
-      const { loginStatus, userName, password } = req.body;
+      const { loginStatus, username, password } = req.body;
 
       const website = await WebsiteList.findById(req.params.id);
 
-      website.username = userName;
+      website.username = username;
       website.password = password;
       website.loginStatus = loginStatus;
 
