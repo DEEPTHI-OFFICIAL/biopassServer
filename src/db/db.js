@@ -2,9 +2,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 atlas =
-  "mongodb+srv://appu:appu@cluster0.obhakyn.mongodb.net/?retryWrites=true&w=majority";
-//local = "mongodb://0.0.0.0:27017/biopass"
-// const db = "mongodb+srv://appu:appu@cluster0.jme0etq.mongodb.net/test";
+  "YOUR CLUSTER URL";
 
 mongoose.Promise = global.Promise;
 
