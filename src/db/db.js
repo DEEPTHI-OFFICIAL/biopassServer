@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 atlas =
-  "YOUR CLUSTER URL";
+  "mongodb+srv://deepthi:deepthiSun@cluster0.jzktmar.mongodb.net/";
 
 mongoose.Promise = global.Promise;
 
